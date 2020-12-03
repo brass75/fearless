@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Purple Cow Project</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            function update() {          
+                $.getJSON(counter_url, function(response) {
+                        $("#cowCounter").text(" " + response.value + " ");
+                    });
+            }
+            $(document).ready(function(){
+                $.getJSON("/get_auth", function(response) {
+                    counter_url="https://api.countapi.xyz/hit/" + response.namespace + "/" + response.key
+                    update()
+                });
+                $("#update").click(function(){
+                    update()
+                });
+            });
+        </script>
+        <link rel="stylesheet" href="/styles/cows.css">
+
+        </style>
+    </head>
+    <body>
+        <h1>Welcome to Dan Shernicoff's Purple Cow Counter</h1> 
+        <p>To date we've seen&nbsp;<span name="cowCounter" id="cowCounter"></span>&nbsp;purple cows!</p>
+        <button id="update" name="update">Update!</button>
+    </body>
+</html> 

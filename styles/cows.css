@@ -1,0 +1,12 @@
+#cowCounter {
+    background-color: blueviolet;
+    color:            white;  
+}
+p {
+    background-color: white;
+    color: blueviolet;
+}
+#update {
+    background-color :cyan;
+    color: blueviolet;
+}
