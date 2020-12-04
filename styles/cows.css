@@ -1,12 +1,12 @@
-#cowCounter {
+.cows {
     background-color: blueviolet;
     color:            white;  
 }
-p {
+.text {
     background-color: white;
     color: blueviolet;
 }
-#update {
+.update {
     background-color :cyan;
     color: blueviolet;
 }
