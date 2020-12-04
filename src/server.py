@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from flask import Flask, render_template, request
 import requests
 import os
@@ -31,6 +32,5 @@ if __name__ == '__main__':
     if os.path.exists(CONFIG_FILE):
         with open(CONFIG_FILE) as f:
             config = json.load(f)
-    print(config)
     port = config.get('port', DEFAULT_PORT)
     app.run('0.0.0.0', port, debug=True)
