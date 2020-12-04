@@ -12,6 +12,7 @@ IMG_NAME="purple-cows"
 DOCKER_ID_FILE=".running"
 SERVICE_DATA_PATH=${SERVICE_DATA_PATH:-"/code/data"}
 SERVICE_PORT=${SERVICE_PORT:-8080}
+CONFIG_FILE=config.json
 
 function usage()
 {
@@ -45,7 +46,12 @@ function start()
         done
         rm ${DOCKER_ID_FILE}
     fi         
-    port=$(./json_val.py -f config.json -d port)   
+    local port
+    if [[ -e ${CONFIG_FILE} ]]; then
+        port=$(./json_val.py -f ${CONFIG_FILE} -d port)   
+    else
+        touch ${CONFIG_FILE}
+    fi
     port=${port:-3000}
     docker build -t ${IMG_NAME} . || die "ERROR: Unable to build docker image!"
     mkdir -p $(pwd)/data $(pwd)/log
