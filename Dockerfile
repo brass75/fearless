@@ -1,5 +1,5 @@
 # This is a relatively lightweight debian image that includes Python 3.8
-FROM registry.hub.docker.com/library/python:3.8-slim-buster
+FROM registry.hub.docker.com/library/python:3.9-slim-buster
 
 # Setting the working directory inside the container
 WORKDIR /code
