@@ -60,3 +60,7 @@ Some ideas for future features:
 - Configurable color schemes
 - Configurable page header
 - Use of countapi.xyz APIs beyond `hit` 
+
+# Notes
+
+Since bash has no method of cleanly reading JSON files a helper script, [`json_val.py`](json_val.py), is included in the source tree. The purpose of this script is to easily extract the port from [`config.json`](config.json) for use in [`start-service.sh`](start-service.sh). As this script is not used inside the container it is not part of the `src` filesystem that is copied to the container.
