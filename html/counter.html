@@ -4,9 +4,14 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
             function update() {          
-                $.getJSON(counter_url, function(response) {
+                var jqxhr = $.getJSON(counter_url, function(response) {
                         $("#cowCounter").text(" " + response.value + " ");
+                    })  
+                    .fail(function() {
+                        console.log( "Unable to hit the counter at " + counter_url );
+                        $("#cowCounter").text(" There appears to be a problem ")
                     });
+                
             }
             $(document).ready(function(){
                 $.getJSON("/get_auth", function(response) {
@@ -24,7 +29,7 @@
     </head>
     <body>
         <h1>Welcome to Dan Shernicoff's Purple Cow Counter</h1> 
-        <p class="text">To date we've seen&nbsp;<span id="cowCounter"class="cows"></span>&nbsp;purple cows!</p>
+        <p class="text">To date we've seen&nbsp;<span id="cowCounter"class="cows"> &#8987; </span>&nbsp;purple cows!</p>
         <button id="update" class="update">Update!</button>
     </body>
 </html> 
